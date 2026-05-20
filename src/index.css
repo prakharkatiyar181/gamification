@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+@layer base {
+  body {
+    @apply antialiased text-[#303030] bg-[#FFFFFF] font-inter select-none;
+  }
+}
+
+/* Custom scrollbars for a premium look */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(197, 48, 197, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(197, 48, 197, 0.4);
+}
