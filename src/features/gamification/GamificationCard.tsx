@@ -1,25 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { toggleGamification, addAmbassadorXP, updateMilestoneProgress } from '../../store/gamificationSlice';
 import confetti from 'canvas-confetti';
 import { Play, Sparkles, Trophy, UserCheck, Flame, Plus } from 'lucide-react';
+import { CreateRewardModal } from './CreateRewardModal';
 
 export const GamificationCard: React.FC = () => {
   const isEnabled = useAppSelector((state) => state.gamification.isEnabled);
   const ambassadors = useAppSelector((state) => state.gamification.ambassadors);
   const dispatch = useAppDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleEnableClick = () => {
-    // 1. Confetti celebration!
-    confetti({
-      particleCount: 150,
-      spread: 80,
-      origin: { y: 0.6 },
-      colors: ['#C530C5', '#561056', '#FBCFFB', '#FFFDFF'],
-    });
-
-    // 2. Dispatch state toggle
-    dispatch(toggleGamification());
+    setIsModalOpen(true);
   };
 
   const handleSimulateXP = (id: string) => {
@@ -173,34 +166,41 @@ export const GamificationCard: React.FC = () => {
 
   // Pre-enabled state
   return (
-    <div className="w-full max-w-[960px] h-[322px] bg-white border border-[#E3E3E3] rounded-2xl p-6 shadow-sm flex flex-col justify-center items-center relative overflow-hidden select-none">
-      {/* Mesh background */}
-      <img
-        src="/assets/background_mesh.svg"
-        alt="Background Mesh"
-        className="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none select-none z-0"
-      />
+    <>
+      <div className="w-full max-w-[960px] h-[322px] bg-white border border-[#E3E3E3] rounded-2xl p-6 shadow-sm flex flex-col justify-center items-center relative overflow-hidden select-none">
+        {/* Mesh background */}
+        <img
+          src="/assets/background_mesh.svg"
+          alt="Background Mesh"
+          className="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none select-none z-0"
+        />
 
-      {/* Main card contents */}
-      <div className="flex flex-col items-center gap-6 relative z-10 max-w-[354px] text-center">
-        <div className="flex flex-col gap-2">
-          <h2 className="font-jakarta font-semibold text-[28px] leading-[140%] text-[#561056]">
-            Gamify your Campaign
-          </h2>
-          <p className="font-inter font-normal text-[16px] leading-[140%] text-[#616161]">
-            Enable gamification to start crafting your custom reward system.
-          </p>
+        {/* Main card contents */}
+        <div className="flex flex-col items-center gap-6 relative z-10 max-w-[354px] text-center">
+          <div className="flex flex-col gap-2">
+            <h2 className="font-jakarta font-semibold text-[28px] leading-[140%] text-[#561056]">
+              Gamify your Campaign
+            </h2>
+            <p className="font-inter font-normal text-[16px] leading-[140%] text-[#616161]">
+              Enable gamification to start crafting your custom reward system.
+            </p>
+          </div>
+
+          {/* CTA Button */}
+          <button
+            onClick={handleEnableClick}
+            className="flex items-center justify-center gap-2 w-full max-w-[310px] h-[40px] rounded-[10px] bg-[#C530C5] text-white font-inter font-normal text-[16px] leading-[140%] shadow-md hover:bg-[#561056] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group"
+          >
+            <Play size={16} fill="white" className="transition-transform duration-300 group-hover:translate-x-0.5" />
+            Enable Gamification
+          </button>
         </div>
-
-        {/* CTA Button */}
-        <button
-          onClick={handleEnableClick}
-          className="flex items-center justify-center gap-2 w-[310px] h-[40px] rounded-[10px] bg-[#C530C5] text-white font-inter font-normal text-[16px] leading-[140%] shadow-md hover:bg-[#561056] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group"
-        >
-          <Play size={16} fill="white" className="transition-transform duration-300 group-hover:translate-x-0.5" />
-          Enable Gamification
-        </button>
       </div>
-    </div>
+      
+      <CreateRewardModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
+    </>
   );
 };

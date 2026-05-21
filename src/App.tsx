@@ -4,11 +4,11 @@ import { Sidebar } from './components/layout/Sidebar';
 import { Navbar } from './components/layout/Navbar';
 import { GamificationCard } from './features/gamification/GamificationCard';
 import { FeatureGrid } from './features/gamification/FeatureGrid';
-import { 
-  TrendingUp, 
-  Users, 
-  DollarSign, 
-  ArrowUpRight, 
+import {
+  TrendingUp,
+  Users,
+  DollarSign,
+  ArrowUpRight,
   Calendar,
   Lock
 } from 'lucide-react';
@@ -101,7 +101,7 @@ const App: React.FC = () => {
               <p className="font-inter text-[13px] text-[#616161] mb-6">
                 Monthly progression of ambassador reach and social impression statistics.
               </p>
-              
+
               {/* Graphic Chart representation */}
               <div className="h-[200px] w-full bg-slate-50 border border-dashed border-slate-200 rounded-xl flex items-center justify-center relative overflow-hidden">
                 {/* Simulated SVG Area Chart */}
@@ -250,9 +250,9 @@ const App: React.FC = () => {
                   <div className="flex flex-col gap-1.5">
                     <label className="font-jakarta font-medium text-[13px]">Shopify API Integration Key</label>
                     <div className="relative">
-                      <input 
-                        type="password" 
-                        value="••••••••••••••••••••••••••••••••" 
+                      <input
+                        type="password"
+                        value="••••••••••••••••••••••••••••••••"
                         disabled
                         className="w-full px-3 py-2 border border-slate-200 rounded-lg bg-slate-50 text-[13px] font-mono"
                       />
@@ -262,9 +262,9 @@ const App: React.FC = () => {
                   <div className="flex flex-col gap-1.5">
                     <label className="font-jakarta font-medium text-[13px]">Default Ambassador Commission</label>
                     <div className="relative">
-                      <input 
-                        type="text" 
-                        value="10% flat commission rate" 
+                      <input
+                        type="text"
+                        value="10% flat commission rate"
                         disabled
                         className="w-full px-3 py-2 border border-slate-200 rounded-lg bg-slate-50 text-[13px]"
                       />
@@ -278,9 +278,9 @@ const App: React.FC = () => {
                     Send automated notification alerts to advocates upon successful milestones.
                   </p>
                   <label className="flex items-center gap-3 cursor-pointer">
-                    <input 
-                      type="checkbox" 
-                      defaultChecked 
+                    <input
+                      type="checkbox"
+                      defaultChecked
                       className="w-4 h-4 text-[#C530C5] border-gray-300 rounded focus:ring-purple-500 cursor-pointer"
                     />
                     <span className="text-[13px] font-inter text-[#303030]">Enable automated email reward templates</span>
@@ -307,16 +307,8 @@ const App: React.FC = () => {
         <Navbar onMenuOpen={() => setIsSidebarOpen(true)} />
 
         {/* Content Panel Area */}
-        <main className="flex-1 px-4 lg:px-[146px] py-12 flex flex-col gap-16 relative overflow-hidden select-none bg-white">
+        <main className="flex-1 px-4 lg:px-8 py-12 flex flex-col gap-16 relative overflow-hidden select-none bg-white">
           {renderContent()}
-
-          {/* Infinite Horizontal Running Text Ticker */}
-          <div className="w-full mt-auto pt-6 border-t border-[#F5F5F5] select-none pointer-events-none relative overflow-hidden bg-[#FBCFFB] rounded-xl py-3 px-6 h-[48px] flex items-center justify-center">
-            <div className="animate-marquee whitespace-nowrap flex gap-8 font-inter font-semibold text-[14px] tracking-wider text-[#340634] uppercase">
-              <span>★ Reward Your Ambassadors ★ Set Custom Milestones ★ Customize Incentives ★ Enable automatic billing integrations ★ track instagram referral sales ★</span>
-              <span>★ Reward Your Ambassadors ★ Set Custom Milestones ★ Customize Incentives ★ Enable automatic billing integrations ★ track instagram referral sales ★</span>
-            </div>
-          </div>
         </main>
       </div>
     </div>

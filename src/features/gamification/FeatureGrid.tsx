@@ -163,11 +163,11 @@ export const FeatureGrid: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-center gap-6 w-full max-w-[960px] select-none">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-[960px] select-none justify-items-center">
       {promoCards.map((card, idx) => (
         <div
           key={idx}
-          className="relative w-[292px] h-[200px] bg-white border border-[#FEE7FE] rounded-lg p-4 flex flex-col justify-end items-center text-center shadow-sticky-bar hover:shadow-md hover:scale-[1.01] transition-all duration-300 group overflow-hidden"
+          className="relative w-full max-w-[292px] h-[200px] bg-white border border-[#FEE7FE] rounded-lg p-4 flex flex-col justify-end items-center text-center shadow-sticky-bar hover:shadow-md hover:scale-[1.01] transition-all duration-300 group overflow-hidden"
         >
           {/* Card background vector pattern */}
           <div className="absolute inset-0 z-0 bg-slate-50/50 pointer-events-none opacity-40" />
@@ -182,7 +182,7 @@ export const FeatureGrid: React.FC = () => {
           </div>
 
           {/* Texts Section */}
-          <div className="flex flex-col gap-2 w-[260px] h-auto relative z-10">
+          <div className="flex flex-col gap-2 w-full max-w-[260px] h-auto relative z-10">
             <h3 className="font-jakarta font-medium text-[16px] leading-[140%] text-[#303030] tracking-wide">
               {card.title}
             </h3>
