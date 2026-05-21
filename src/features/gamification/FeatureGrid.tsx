@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../store';
 import { toggleIncentiveStatus } from '../../store/gamificationSlice';
 import { Target, CheckCircle2, CheckSquare } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import cardBg from '../../assets/card_bg.png'
 
 export const FeatureGrid: React.FC = () => {
   const isEnabled = useAppSelector((state) => state.gamification.isEnabled);
@@ -18,7 +19,7 @@ export const FeatureGrid: React.FC = () => {
 
 
   const handleClaimReward = (id: string) => {
-    setActiveRewards(prev => 
+    setActiveRewards(prev =>
       prev.map(r => r.id === id ? { ...r, claimed: true } : r)
     );
 
@@ -59,7 +60,7 @@ export const FeatureGrid: React.FC = () => {
                       Approved
                     </span>
                   ) : (
-                    <button 
+                    <button
                       onClick={() => handleClaimReward(r.id)}
                       className="px-2 py-1 rounded bg-[#C530C5] text-white hover:bg-[#561056] text-[11px] transition-colors cursor-pointer"
                     >
@@ -81,7 +82,7 @@ export const FeatureGrid: React.FC = () => {
               </span>
               Live Milestones
             </h3>
-            
+
             <div className="flex flex-col gap-3 mt-1 max-h-[140px] overflow-y-auto pr-1">
               {milestones.map(m => {
                 const percent = Math.floor((m.current / m.target) * 100);
@@ -93,8 +94,8 @@ export const FeatureGrid: React.FC = () => {
                     </div>
                     {/* Progress Bar */}
                     <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
-                      <div 
-                        className="bg-[#C530C5] h-1.5 rounded-full transition-all duration-500" 
+                      <div
+                        className="bg-[#C530C5] h-1.5 rounded-full transition-all duration-500"
                         style={{ width: `${percent}%` }}
                       />
                     </div>
@@ -120,15 +121,15 @@ export const FeatureGrid: React.FC = () => {
 
             <div className="flex flex-col gap-2">
               {incentives.map(inc => (
-                <label 
-                  key={inc.id} 
+                <label
+                  key={inc.id}
                   className="flex items-center justify-between p-2 rounded-lg bg-slate-50 border border-slate-100/60 cursor-pointer hover:bg-slate-100/50 transition-colors"
                 >
                   <div>
                     <span className="text-[12px] font-semibold text-[#303030] block leading-tight">{inc.type}</span>
                     <span className="text-[10px] text-[#616161]">{inc.value}</span>
                   </div>
-                  <input 
+                  <input
                     type="checkbox"
                     checked={inc.status}
                     onChange={() => dispatch(toggleIncentiveStatus(inc.id))}
@@ -170,7 +171,7 @@ export const FeatureGrid: React.FC = () => {
           className="relative w-full max-w-[292px] h-[200px] bg-white border border-[#FEE7FE] rounded-lg p-4 flex flex-col justify-end items-center text-center shadow-sticky-bar hover:shadow-md hover:scale-[1.01] transition-all duration-300 group overflow-hidden"
         >
           {/* Card background vector pattern */}
-          <div className="absolute inset-0 z-0 bg-slate-50/50 pointer-events-none opacity-40" />
+          <img src={cardBg} alt="Background" className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none" />
 
           {/* Centered Illustration Icon */}
           <div className="absolute top-[24px] z-10 w-[70px] h-[70px] flex items-center justify-center pointer-events-none select-none">

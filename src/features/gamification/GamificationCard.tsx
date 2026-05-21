@@ -18,7 +18,7 @@ export const GamificationCard: React.FC = () => {
   const handleSimulateXP = (id: string) => {
     const randomAmount = Math.floor(Math.random() * 50) + 30; // 30-80 XP
     dispatch(addAmbassadorXP({ id, amount: randomAmount }));
-    
+
     // Add progress to corresponding milestone
     const progressAmount = Math.random() > 0.5 ? 1 : 2;
     dispatch(updateMilestoneProgress({ id: 'm1', amount: progressAmount }));
@@ -37,8 +37,8 @@ export const GamificationCard: React.FC = () => {
     return (
       <div className="w-full max-w-[960px] min-h-[322px] bg-white border border-[#E3E3E3] rounded-2xl p-6 shadow-sm animate-scale-in select-none relative overflow-hidden">
         {/* Background mesh decoration */}
-        <div 
-          className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{ backgroundImage: 'url(/assets/background_mesh.svg)', backgroundSize: 'cover' }}
         />
 
@@ -72,16 +72,16 @@ export const GamificationCard: React.FC = () => {
               <Trophy size={16} className="text-[#C530C5]" />
               Top Brand Ambassadors
             </h3>
-            
+
             <div className="flex flex-col gap-2 max-h-[190px] overflow-y-auto pr-1">
               {ambassadors.map((amb) => (
-                <div 
+                <div
                   key={amb.id}
                   className="flex items-center justify-between p-2.5 rounded-xl border border-slate-50 bg-[#FFFDFF]/80 hover:bg-[#FFFDFF] hover:shadow-sm transition-all duration-300 group"
                 >
                   <div className="flex items-center gap-3">
-                    <img 
-                      src={amb.avatarUrl} 
+                    <img
+                      src={amb.avatarUrl}
                       alt={amb.name}
                       className="w-9 h-9 rounded-full object-cover border border-primary/20 pointer-events-none select-none"
                     />
@@ -167,7 +167,7 @@ export const GamificationCard: React.FC = () => {
   // Pre-enabled state
   return (
     <>
-      <div className="w-full max-w-[960px] h-[322px] bg-white border border-[#E3E3E3] rounded-2xl p-6 shadow-sm flex flex-col justify-center items-center relative overflow-hidden select-none">
+      <div className="w-full max-w-[960px] h-[322px] bg-white border-[0.6px] border-[#E3E3E3] rounded-2xl p-6 flex flex-col justify-center items-center relative overflow-hidden select-none">
         {/* Mesh background */}
         <img
           src="/assets/background_mesh.svg"
@@ -176,7 +176,7 @@ export const GamificationCard: React.FC = () => {
         />
 
         {/* Main card contents */}
-        <div className="flex flex-col items-center gap-6 relative z-10 max-w-[354px] text-center">
+        <div className="flex flex-col items-center gap-6 relative z-10 max-w-[354px] text-center mt-[-50px]">
           <div className="flex flex-col gap-2">
             <h2 className="font-jakarta font-semibold text-[28px] leading-[140%] text-[#561056]">
               Gamify your Campaign
@@ -191,15 +191,14 @@ export const GamificationCard: React.FC = () => {
             onClick={handleEnableClick}
             className="flex items-center justify-center gap-2 w-full max-w-[310px] h-[40px] rounded-[10px] bg-[#C530C5] text-white font-inter font-normal text-[16px] leading-[140%] shadow-md hover:bg-[#561056] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group cursor-pointer"
           >
-            <Play size={16} fill="white" className="transition-transform duration-300 group-hover:translate-x-0.5" />
             Enable Gamification
           </button>
         </div>
       </div>
-      
-      <CreateRewardModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+
+      <CreateRewardModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
       />
     </>
   );

@@ -76,11 +76,13 @@ const App: React.FC = () => {
     switch (activeTab) {
       case 'Gamification':
         return (
-          <div className="flex flex-col items-center gap-12 w-full max-w-[960px] mx-auto animate-fade-in">
+          <div className="flex flex-col items-center w-full max-w-[960px] mx-auto animate-fade-in">
             {/* Gamification Core Container */}
             <GamificationCard />
             {/* Promo / Control Cards Grid */}
-            <FeatureGrid />
+            <div className="relative z-10 -mt-[70px] w-full flex justify-center p-[0_16px]">
+              <FeatureGrid />
+            </div>
           </div>
         );
 
