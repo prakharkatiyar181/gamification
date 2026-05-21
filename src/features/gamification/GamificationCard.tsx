@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { toggleGamification, addAmbassadorXP, updateMilestoneProgress } from '../../store/gamificationSlice';
 import confetti from 'canvas-confetti';
-import { Play, Sparkles, Trophy, UserCheck, Flame, Plus } from 'lucide-react';
+import { Sparkles, Trophy, UserCheck, Flame, Plus } from 'lucide-react';
 import { CreateRewardModal } from './CreateRewardModal';
 
 export const GamificationCard: React.FC = () => {
