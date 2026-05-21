@@ -30,7 +30,7 @@ export default {
       },
       animation: {
         'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'fade-in': 'fadeIn 0.5s ease-out forwards',
+        'fade-in': 'fadeIn 0.2s ease-out forwards',
         'scale-in': 'scaleIn 0.3s ease-out forwards',
         'marquee': 'marquee 30s linear infinite',
         'toast-slide-in': 'toastSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards',
