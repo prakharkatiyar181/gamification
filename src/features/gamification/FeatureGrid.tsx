@@ -61,7 +61,7 @@ export const FeatureGrid: React.FC = () => {
                   ) : (
                     <button 
                       onClick={() => handleClaimReward(r.id)}
-                      className="px-2 py-1 rounded bg-[#C530C5] text-white hover:bg-[#561056] text-[11px] transition-colors"
+                      className="px-2 py-1 rounded bg-[#C530C5] text-white hover:bg-[#561056] text-[11px] transition-colors cursor-pointer"
                     >
                       Approve
                     </button>

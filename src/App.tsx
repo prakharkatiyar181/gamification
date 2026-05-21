@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { useAppSelector } from './store';
+import React, { useState, useEffect } from 'react';
+import { useAppSelector, useAppDispatch } from './store';
+import { hideToast } from './store/gamificationSlice';
 import { Sidebar } from './components/layout/Sidebar';
 import { Navbar } from './components/layout/Navbar';
 import { GamificationCard } from './features/gamification/GamificationCard';
@@ -10,12 +11,65 @@ import {
   DollarSign,
   ArrowUpRight,
   Calendar,
-  Lock
+  Lock,
+  Check
 } from 'lucide-react';
+
+interface SuccessToastProps {
+  message: string;
+  onClose: () => void;
+}
+
+const SuccessToast: React.FC<SuccessToastProps> = ({ message, onClose }) => {
+  const [isExiting, setIsExiting] = useState(false);
+
+  useEffect(() => {
+    const autoHideTimer = setTimeout(() => {
+      setIsExiting(true);
+    }, 3200);
+
+    const closeTimer = setTimeout(() => {
+      onClose();
+    }, 3500);
+
+    return () => {
+      clearTimeout(autoHideTimer);
+      clearTimeout(closeTimer);
+    };
+  }, [onClose]);
+
+  const handleManualClose = () => {
+    setIsExiting(true);
+    setTimeout(() => {
+      onClose();
+    }, 250); // Wait for exit animation to complete (250ms)
+  };
+
+  return (
+    <div
+      onClick={handleManualClose}
+      className={`fixed top-6 left-1/2 z-[10000] flex items-center w-[183px] h-[48px] bg-[#303030] rounded-[16px] pl-[13px] pr-[15px] select-none pointer-events-auto cursor-pointer border-none transition-all duration-200 hover:opacity-95 ${isExiting ? 'animate-toast-slide-out' : 'animate-toast-slide-in'
+        }`}
+      style={{
+        transform: 'translateX(-50%)',
+        boxShadow: '0px 4px 2px rgba(48, 48, 48, 0.16)'
+      }}
+    >
+      <div className="w-[26px] h-[26px] flex items-center justify-center rounded-full bg-[#2ED389] text-black shrink-0">
+        <Check size={14} strokeWidth={3} />
+      </div>
+      <span className="font-inter font-medium text-[14px] text-[#FCFDFF] tracking-wide whitespace-nowrap ml-[10px] flex-1 leading-none select-none">
+        {message}
+      </span>
+    </div>
+  );
+};
 
 const App: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const activeTab = useAppSelector((state) => state.gamification.activeTab);
+  const dispatch = useAppDispatch();
+  const toastMessage = useAppSelector((state) => state.gamification.toastMessage);
 
   // Content switcher depending on selected sidebar item
   const renderContent = () => {
@@ -177,10 +231,10 @@ const App: React.FC = () => {
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <button className="px-3 py-1.5 rounded-lg border border-[#E3E3E3] font-jakarta text-[12px] hover:bg-slate-50 transition-colors">
+                      <button className="px-3 py-1.5 rounded-lg border border-[#E3E3E3] font-jakarta text-[12px] hover:bg-slate-50 transition-colors cursor-pointer">
                         Decline
                       </button>
-                      <button className="px-3 py-1.5 rounded-lg bg-[#C530C5] text-white font-jakarta text-[12px] hover:bg-[#561056] transition-colors">
+                      <button className="px-3 py-1.5 rounded-lg bg-[#C530C5] text-white font-jakarta text-[12px] hover:bg-[#561056] transition-colors cursor-pointer">
                         Approve Advocate
                       </button>
                     </div>
@@ -311,6 +365,11 @@ const App: React.FC = () => {
           {renderContent()}
         </main>
       </div>
+
+      {/* Success Toast Notification */}
+      {toastMessage && (
+        <SuccessToast message={toastMessage} onClose={() => dispatch(hideToast())} />
+      )}
     </div>
   );
 };

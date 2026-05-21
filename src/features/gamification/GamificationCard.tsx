@@ -58,7 +58,7 @@ export const GamificationCard: React.FC = () => {
 
           <button
             onClick={() => dispatch(toggleGamification())}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-red-200 text-red-500 font-jakarta text-[13px] font-medium bg-red-50/50 hover:bg-red-50 transition-all duration-300"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-red-200 text-red-500 font-jakarta text-[13px] font-medium bg-red-50/50 hover:bg-red-50 transition-all duration-300 cursor-pointer"
           >
             Deactivate System
           </button>
@@ -109,7 +109,7 @@ export const GamificationCard: React.FC = () => {
 
                     <button
                       onClick={() => handleSimulateXP(amb.id)}
-                      className="p-1 rounded-md bg-primary-light text-[#C530C5] hover:bg-[#C530C5] hover:text-white transition-colors duration-300"
+                      className="p-1 rounded-md bg-primary-light text-[#C530C5] hover:bg-[#C530C5] hover:text-white transition-colors duration-300 cursor-pointer"
                       title="Simulate Event"
                     >
                       <Plus size={14} />
@@ -189,7 +189,7 @@ export const GamificationCard: React.FC = () => {
           {/* CTA Button */}
           <button
             onClick={handleEnableClick}
-            className="flex items-center justify-center gap-2 w-full max-w-[310px] h-[40px] rounded-[10px] bg-[#C530C5] text-white font-inter font-normal text-[16px] leading-[140%] shadow-md hover:bg-[#561056] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group"
+            className="flex items-center justify-center gap-2 w-full max-w-[310px] h-[40px] rounded-[10px] bg-[#C530C5] text-white font-inter font-normal text-[16px] leading-[140%] shadow-md hover:bg-[#561056] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group cursor-pointer"
           >
             <Play size={16} fill="white" className="transition-transform duration-300 group-hover:translate-x-0.5" />
             Enable Gamification

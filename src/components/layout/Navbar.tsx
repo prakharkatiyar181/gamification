@@ -19,7 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onMenuOpen }) => {
         <div className="flex items-center gap-3">
           <button 
             onClick={onMenuOpen}
-            className="p-1.5 text-neutral-dark lg:hidden rounded-lg hover:bg-slate-100 transition-colors"
+            className="p-1.5 text-neutral-dark lg:hidden rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
             aria-label="Open Sidebar"
           >
             <Menu size={22} />
@@ -35,7 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onMenuOpen }) => {
           {/* Bell Icon with Badge */}
           <button 
             onClick={() => dispatch(clearNotifications())}
-            className="relative p-2 rounded-lg hover:bg-slate-50 transition-all duration-300 group"
+            className="relative p-2 rounded-lg hover:bg-slate-50 transition-all duration-300 group cursor-pointer"
             aria-label="View Notifications"
           >
             <img 
@@ -63,8 +63,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onMenuOpen }) => {
               <p className="font-semibold text-neutral-dark px-2 py-1">Prakhar Katiyar</p>
               <p className="text-neutral-gray px-2 py-0.5 text-[11px] mb-1">Campaign Manager</p>
               <hr className="border-slate-100 my-1" />
-              <button className="text-left px-2 py-1 rounded hover:bg-primary-light hover:text-primary transition-colors">My Profile</button>
-              <button className="text-left px-2 py-1 rounded hover:bg-red-50 hover:text-red-500 transition-colors">Sign Out</button>
+              <button className="text-left px-2 py-1 rounded hover:bg-primary-light hover:text-primary transition-colors cursor-pointer">My Profile</button>
+              <button className="text-left px-2 py-1 rounded hover:bg-red-50 hover:text-red-500 transition-colors cursor-pointer">Sign Out</button>
             </div>
           </div>
         </div>

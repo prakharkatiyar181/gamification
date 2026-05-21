@@ -31,6 +31,7 @@ export interface GamificationState {
     value: string;
     status: boolean;
   }[];
+  toastMessage: string | null;
 }
 
 const initialState: GamificationState = {
@@ -53,6 +54,7 @@ const initialState: GamificationState = {
     { id: 'i2', type: 'Special Higher Commission Rate', value: '15% on products', status: true },
     { id: 'i3', type: 'Free Product Credits', value: '$100 monthly allocation', status: false },
   ],
+  toastMessage: null,
 };
 
 const gamificationSlice = createSlice({
@@ -87,6 +89,12 @@ const gamificationSlice = createSlice({
       if (mile) {
         mile.current = Math.min(mile.target, mile.current + action.payload.amount);
       }
+    },
+    showToast: (state, action: PayloadAction<string>) => {
+      state.toastMessage = action.payload;
+    },
+    hideToast: (state) => {
+      state.toastMessage = null;
     }
   },
 });
@@ -98,6 +106,8 @@ export const {
   addAmbassadorXP,
   toggleIncentiveStatus,
   updateMilestoneProgress,
+  showToast,
+  hideToast,
 } = gamificationSlice.actions;
 
 export default gamificationSlice.reducer;

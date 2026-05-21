@@ -33,6 +33,8 @@ export default {
         'fade-in': 'fadeIn 0.5s ease-out forwards',
         'scale-in': 'scaleIn 0.3s ease-out forwards',
         'marquee': 'marquee 30s linear infinite',
+        'toast-slide-in': 'toastSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'toast-slide-out': 'toastSlideOut 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
       keyframes: {
         fadeIn: {
@@ -46,6 +48,14 @@ export default {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
+        },
+        toastSlideIn: {
+          '0%': { opacity: '0', transform: 'translate(-50%, -40px)' },
+          '100%': { opacity: '1', transform: 'translate(-50%, 0)' },
+        },
+        toastSlideOut: {
+          '0%': { opacity: '1', transform: 'translate(-50%, 0)' },
+          '100%': { opacity: '0', transform: 'translate(-50%, -40px)' },
         }
       }
     },
